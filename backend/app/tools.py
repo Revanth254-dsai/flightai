@@ -21,7 +21,7 @@ REGISTRY = {"get_ticket_price": get_ticket_price, "book_flight": book_flight}
 SCHEMAS = [
     {"type": "function", "function": {
         "name": "get_ticket_price",
-        "description": "Get the price of a return ticket to the destination city.",
+        "description": "Get the price of a flight ticket from Tirupati to the destination city.",
         "parameters": {"type": "object",
             "properties": {"destination_city": {"type": "string"}},
             "required": ["destination_city"]}}},
