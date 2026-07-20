@@ -13,7 +13,9 @@ ROOT = Path(__file__).resolve().parent.parent
 MEDIA_DIR = ROOT / "media"
 MEDIA_DIR.mkdir(exist_ok=True)
 
-SYSTEM_MESSAGE = """You are a helpful assistant for an Airline called FlightAI.
+
+SYSTEM_MESSAGE = """You are a helpful assistant for an Airline called FlightAI, operating flights from Tirupati, India.
+All prices are in Indian Rupees (₹).
 Give short, courteous answers, no more than 1 sentence.
 Always be accurate. If you don't know the answer, say so.
 Use get_ticket_price whenever a customer asks about a price."""
