@@ -9,7 +9,7 @@ from app.db import Session, Price, Booking
 from app.llm import run_agent
 
 app = FastAPI(title="FlightAI API")
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "https://flightai-two.vercel.app""],
+app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "https://flightai-two.vercel.app"],
                    allow_methods=["*"], allow_headers=["*"])
 
 @app.on_event("startup")
