@@ -9,9 +9,18 @@ from app.db import Session, Price, Booking
 from app.llm import run_agent
 
 app = FastAPI(title="FlightAI API")
-app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173"],
+app.add_middleware(CORSMiddleware, allow_origins=["*"],
                    allow_methods=["*"], allow_headers=["*"])
 
+@app.on_event("startup")
+def auto_seed():
+    with Session() as db:
+        if not db.query(Price).first():
+            for city, price in {"london": 799, "paris": 899, "tokyo": 1420,
+                                "sydney": 2999, "berlin": 499}.items():
+                db.add(Price(city=city, price=price))
+            db.commit()
+            
 class Msg(BaseModel):
     role: str = Field(pattern="^(user|assistant)$")
     content: str
