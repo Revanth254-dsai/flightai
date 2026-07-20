@@ -3,7 +3,7 @@
 Full-stack AI customer-support assistant with **streaming LLM tool calling**, text-to-speech, and image generation. React frontend consumes a Server-Sent Events stream from a FastAPI backend running an agentic loop on Groq.
 
 ## Demo
-- **Live:** _coming soon_
+- **Live:** _https://flightai-two.vercel.app_
 - Ask: *"How much is a ticket to Tokyo?"* → watch the agent call the pricing tool, stream its reply, speak it aloud, and render city art.
 - Say: *"Book me a flight to Paris, my name is X"* → the agent chains tools and writes a booking to the database.
 
