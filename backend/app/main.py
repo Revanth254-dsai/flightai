@@ -8,6 +8,12 @@ from app.config import MEDIA_DIR
 from app.db import Session, Price, Booking
 from app.llm import run_agent
 
+# Same cities and prices as seed.py, so a fresh deployment and a local setup behave identically.
+SEED_PRICES = {"delhi": 9500, "bengaluru": 4200, "chennai": 3800,
+               "hyderabad": 4500, "pune": 7200, "kochi": 6800,
+               "vizag": 5500, "mumbai": 8200, "goa": 7500,
+               "kolkata": 9800}
+
 app = FastAPI(title="FlightAI API")
 app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "https://flightai-two.vercel.app"],
                    allow_methods=["*"], allow_headers=["*"])
@@ -16,8 +22,7 @@ app.add_middleware(CORSMiddleware, allow_origins=["http://localhost:5173", "http
 def auto_seed():
     with Session() as db:
         if not db.query(Price).first():
-            for city, price in {"london": 799, "paris": 899, "tokyo": 1420,
-                                "sydney": 2999, "berlin": 499}.items():
+            for city, price in SEED_PRICES.items():
                 db.add(Price(city=city, price=price))
             db.commit()
 
