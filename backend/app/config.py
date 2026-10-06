@@ -2,14 +2,15 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+ROOT = Path(__file__).resolve().parent.parent          # .../flightai/backend
+load_dotenv(ROOT / ".env", override=True)               # load backend/.env explicitly
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+POLLINATIONS_API_KEY = os.getenv("POLLINATIONS_API_KEY")
 BASE_URL = "https://api.groq.com/openai/v1"
-CHAT_MODEL = "llama-3.3-70b-versatile"
+CHAT_MODEL = "openai/gpt-oss-120b"                      # llama-3.3-70b-versatile was retired by Groq
 TTS_MODEL = "canopylabs/orpheus-v1-english"
 
-ROOT = Path(__file__).resolve().parent.parent
 MEDIA_DIR = ROOT / "media"
 MEDIA_DIR.mkdir(exist_ok=True)
 
